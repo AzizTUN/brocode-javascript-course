@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>PLACEHOLDER1
+    </button>
+</body>
+</html>
+<script>
+    //Strings
+    document.querySelector('button').onclick = function(){
+        let xy = "Aziz" ;
+        console.log(xy.charAt(0)) ; xy.indexOf('z',2) ; xy.lastIndexOf('z') ; xy.length ; xy.repeat(3) //coupier 3 fois
+        console.log(xy.startsWith(' '));     console.log(xy.endsWith(' '));   ; xy.replace('A','e') ;  xy.includes(" ");
+        xy.replaceAll("a","") ; xy.padStart(15,"0") ; xy.padEnd(15,"0") /*complete to get length */
+    }
+     //slice :
+    const name = "aziz abdallah" ;
+    let firstName = name.slice(0,name.indexOf(" ")) ; //.substring(name,0,4) 
+    //we also have .substr() here
+    console.log(firstName) ;
+    const email = "aziz@gmail.com" ;
+    let user = email.slice(0,email.indexOf("@")) ;
+</script>
