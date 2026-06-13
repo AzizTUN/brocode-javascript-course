@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="a">Age :</label>
+    <input style="border-radius: 12px;padding: 5px;color: burlywood;display: block;margin: 5px;" type="text" id="a" size="2">
+    <button id="btn" style="padding: 7px;border-radius: 8px;border: none;margin: 7px;">
+        test
+    </button>
+</body>
+</html>
+<script>
+    //Ternary operateur (if else ..)
+    
+    const btn = document.querySelector('#btn') ;
+    btn.onclick = function(){
+        let x = true;
+        const age =Math.trunc ( Number( document.querySelector('#a').value ) );
+        age ? null || 0 : ( alert("give us your age please !") , x=false );
+        if (x) {
+            let msg = (age >= 3 && age <=17 ) ? "Ur a baby" :
+                    (age >=18 && age <=60 ) ? "Ur an adult" :
+                                            "ur an elderly" ;
+            alert('You are '+msg);
+        }
+    }
+</script>
