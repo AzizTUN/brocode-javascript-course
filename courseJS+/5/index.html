@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="name :" id="nt"><br>
+    <button>try ?</button>
+</body>
+</html>
+<script>
+    //CHAININIG :
+    let username = window.prompt("ur full name \n Por favor :");
+    username==null || username=="" ? alert("NO !") :  (alert("OK !"),
+                                                    document.writeln(username.toUpperCase()) ,
+                                                    document.writeln(username.toLowerCase()) );
+    const btn = document.querySelector('button');
+    let x;
+    let y;
+    btn.onclick = function(){
+        const name = document.querySelector('#nt').value ;
+        (name == null || name == "" ) ? alert("name invalide !") : (x = name.charAt(0).toUpperCase() , y = name.slice(1).toLowerCase());
+        x != y ? console.log(`the new name after the edit : ${x}${y}`) : console.log("nnn") ;
+    }
+    //CHAININIG : real
+    username = username.trim().charAt(0).toUpperCase() + username.trim().slice(1).toLowerCase() ;
+    console.log(`username after has been edited : ${username}`);
+</script>
