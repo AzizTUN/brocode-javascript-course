@@ -25,7 +25,35 @@
             let msg = (age >= 3 && age <=17 ) ? "Ur a baby" :
                     (age >=18 && age <=60 ) ? "Ur an adult" :
                                             "ur an elderly" ;
-            alert('You are '+msg);
+            alert(`You are ${msg}`);
         }
     }
+                                                                    //SWITCH
+    let day = 1 ;
+    switch(day){
+        case 1 :
+            console.log("monday");
+            break;
+        case 2 :
+            console.log("Tuesday");
+            break;
+        case 3 :
+            console.log("Wednesday");
+            break;
+        default :
+            console.log("days off");
+    }
+    let guese = Math.trunc(10+Math.random()*91);
+    switch(true){
+        case (guese===50):
+            alert('50%');
+            break;
+        case (guese>=50):
+            alert('>>50%');
+            break;
+        default:
+            alert('<<50%');
+            break;
+    }
+    console.log(`ur secret code is : ${guese}`);
 </script>
