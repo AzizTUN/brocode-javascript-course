@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // we have somthing called strick equality value or the opposite :     ===    !==    ;check the type and the datatype !
+    function puiss (x,y) {
+        if (y===0 )return 1;
+        else return x*puiss(x,y-1);
+    }
+    function fact(p) {
+        if(p===0)return 1;
+        else return p*fact(p-1);
+    }
+    function getNumber(msg){
+        let x;
+        do{
+            x=window.prompt(msg)
+            if(x===null) return null;
+        }while(x.trim().length == 0 || isNaN(x) || !Number.isInteger(Number(x)) || Number(x)<=0 || Number(x)>10) ;return Number(x);
+    }
+    function run(){
+        let x;let y;
+        x=getNumber(`give ur X \n Por favor :`)
+        y=getNumber(`give ur Y \n Por favor :`)
+        if (x === null || y === null) {
+            alert("user canceled the process !") ;
+            return ;
+        }
+        let f ;
+        let p ;
+        p=puiss(x,y) ; f=fact(p) ;
+        console.log(`the pow of ${x} and ${y} is ${p} \n while the fact of this pow is ${f}`);
+        }
+    run()
+
+</script>
