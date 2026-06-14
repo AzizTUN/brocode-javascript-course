@@ -6,12 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <input style="border-style: none;background-color: wheat;color: rgb(47, 78, 2);border-radius: 15px;padding: 5px;display: block;" type="number" id="nb">
+    <button style="display: block;color: wheat;background-color: black;border-radius: 15px;padding: 7px;margin: 5px;">cueuss number game</button>
+    <input type="hidden" name="ok" id="hd">
 </body>
 </html>
 <script>
     // we have somthing called strick equality value or the opposite :     ===    !==    ;check the type and the datatype !
-    function puiss (x,y) {
+   /* function puiss (x,y) {
         if (y===0 )return 1;
         else return x*puiss(x,y-1);
     }
@@ -39,6 +41,32 @@
         p=puiss(x,y) ; f=fact(p) ;
         console.log(`the pow of ${x} and ${y} is ${p} \n while the fact of this pow is ${f}`);
         }
-    run()
+    run()*/
+    //const function is run or nah ?
+    const btn = document.querySelector("button");
+    function guessGame(){
+        let hd = document.getElementById("hd");
+        let err;
+        const myAnswer = document.querySelector("#nb").value ;(myAnswer.trim().length === 0 || Number(myAnswer)>10 || Number(myAnswer)<=0) ? err = -1  : err = 0;
+        if(err === -1) return
+        const max = 10;const min = 1;
+        let rand ;
+        if (hd.value.trim() == "") {
+            rand = Math.trunc(min+Math.random()*(max-min+1)) ;
+            hd.value =String(rand);
+        }else{rand = Number(hd.value)}
+        switch(true){
+            case rand === Number(myAnswer) :
+                alert("u found it ! it is : "+String(rand));hd.value = "" ; break;
+            case rand > Number(myAnswer) :
+                alert("bigger !");break;
+            case rand < Number(myAnswer) :
+                alert("smaller !");break;
+            default :
+                alert("!!!!");break;
+        }
+    }
+    btn.addEventListener("click",guessGame);
+       
 
 </script>
