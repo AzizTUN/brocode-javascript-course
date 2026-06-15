@@ -5,27 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body style="background-color: rgba(0, 0, 0, 0.89);">
     <style>
         main{
-            margin: 15px auto;
-            box-shadow: 1px 1px 1px 1px grey;
+            margin: 35px auto;
+            box-shadow: 2px 2px 5px rgb(255, 255, 255);
             border-radius: 7px;
             padding: 25px;
             max-width: 20%;
             min-height: 12em;
             text-align: center;
-            background-color: rgb(109, 164, 72);
+            background-color: rgb(255, 255, 255);
+            position: relative;
         }
         input[type="text"]{
             width: 7em;
             display: block;
-            margin:auto;
-            border-radius: 15px;
+            margin:11px auto;
+            border-radius: 10px;
             border: none;
-            padding:3.2px;
+            background-color: rgba(245, 222, 179, 0.463);
+            padding:6.2px;
             color:rgb(11, 79, 85);
             font-weight: bold;
+            text-align: center;
+            font-size: 17.2px;
+            outline: none;
+        }
+        input[type="submit"]{
+            display: block;
+            margin-bottom: 2.5em !important;
+            margin: auto;
+            transform: translateY(2em);
+            background-color: rgb(135, 12, 12);color: white;
+            border-radius: 5px;
+            border: none;
+            padding: 6.2px;
+            width: 5.2em;
+            transition: ease 0.5s;
+        }
+        input[type="submit"]:hover{
+            background-color:white;color:  rgb(135, 12, 12);
+            transform: scale(1.03);
+            cursor: pointer;
+            transform: translateY(2em);
+            border: 0.5px solid grey;
+        }
+        output,label{
+            font-size: 17.5px;
+            font-family: sans-serif;
+            line-height: 1.4;
+            font-weight: bold;
+            margin: 7px;
+        }
+        output{
+            position: absolute;
+            bottom: 0em;
+            left : 1em;
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(138, 10, 66);
+            text-shadow: 1px 1px 1.5px rgb(107, 107, 107);
+            letter-spacing: 1.3px;
+        }
+        h2{
+            color: rgb(105, 169, 207);
+            animation-name: tit;
+            text-decoration: underline;
+            animation-duration: 5.6s;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+            animation-delay: 0.5s;
+            animation-direction: alternate;
+        }
+        @keyframes tit {
+            from{
+                color: rgb(28, 63, 63);   
+            }
+            to{
+                color: rgb(167, 116, 206);
+            }
         }
     </style>
     <!--<input type="text" id="x1"> <br>
@@ -35,11 +93,11 @@
     </button>-->
     <main>
         <header>
-            <h1>Temperature conversion</h1>
+            <h2>Temperature conversion</h2>
         </header>
-        <input type="text" id="tmp">
-        <input type="radio" name="rd" id="ce" ><label for="ce" >Celslus -> Fahrenheit</label> <br>
-        <input type="radio" name="rd" id="fa" ><label for="fa" >Fahrenheit -> Celslus</label>
+        <input type="text" id="ss" value="0">
+        <input type="radio" name="rd" id="ce" ><label for="ce" >Celslus ➡️ Fahrenheit</label> <br>
+        <input type="radio" name="rd" id="fa" ><label for="fa" >Fahrenheit ➡️ Celslus</label>
         <input type="submit" value="submit" id="sub">
         <output id="out"></output>
     </main>
@@ -58,5 +116,23 @@
         document.writeln(`the pow of ${x} and ${y} is : ${puiss(Number(x),Number(y))} .`);
     })
 */
-
+    const btn = document.querySelector("#sub") ;
+    const out = document.querySelector("#out") ;
+    const rd = document.getElementsByName("rd") ;
+    const ss = document.getElementById("ss") ;
+    function verf(x){
+        return (x.trim()==="" || !Number.isInteger(Number(x)) )? false : true;
+    }
+    function run(){
+        let tmp;let op;
+        if (!verf(ss.value)){return alert("Wrong typed !")}
+        rd[0].checked ?
+           ( tmp = (9/5 * Number(ss.value) ) + 32 , op="F" )
+        : rd[1].checked ?
+           ( tmp = 5/9 * ( Number(ss.value) - 32) , op="C" )
+        : alert("Chose somthing to find the weather !") ;
+        //alert(tmp)
+        if (tmp !== undefined) out.innerHTML = String(tmp.toFixed(1)) + "°" + op;
+    }
+    btn.addEventListener("click",run) ;
 </script>
