@@ -10,6 +10,7 @@
 </body>
 </html>
 <script>
+    /*
     fruit = ["apple" , "banana" ,"orange" , "melon"]
     fruit.push("coconut")  //add it to the end of the array
     fruit.pop() // Remove the last element
@@ -24,8 +25,23 @@
         console.log(fruit[fruits]) ;
         //or better 
         /*for(let fruits of fruit){
-        console.log(fruits) ;}*/
+        console.log(fruits) ;}
     }
-    fuit.sort().reverse() //to show them in reversed way ordred by alhpabets
+    fuit.sort().reverse() //to show them in reversed way ordred by alhpabets */
+                                                                                        /* ... spread methode for array or string */
+        let T =  [3,2,5,7,8,0,1] ;
+        console.log (Math.max(...T))
+        console.log (...T) ;
+        console.log (T.join(" ")) ;
+        document.writeln(typeof(T))
+
+        let ch = "Aziz abd07" ;
+        document.writeln([...ch].join(" ")) ;
+
+        //xcv 
+        let fr = ["banana","apple","melon","mango"] ;
+        let veg = ["carrots","potatoes"]
+        let cpFr = [...fr].join(" ") ;
+        console.log(cpFr ,...veg)      //spread
 
 </script>
