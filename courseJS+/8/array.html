@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    fruit = ["apple" , "banana" ,"orange" , "melon"]
+    fruit.push("coconut")  //add it to the end of the array
+    fruit.pop() // Remove the last element
+    fruit.unshift("mango") //add from the very begining 
+    fruit.shift() //Remove the first element
+                                                            //u can use indexOf && length in array : fruit.indexOf("apple")°return 0
+    for(let i = fruit.length -1 ; i>=0 ; i--){
+        console.log(fruit[i]) ;
+    }
+    console.log("\n")
+    for(let fruits in fruit){
+        console.log(fruit[fruits]) ;
+        //or better 
+        /*for(let fruits of fruit){
+        console.log(fruits) ;}*/
+    }
+    fuit.sort().reverse() //to show them in reversed way ordred by alhpabets
+
+</script>
