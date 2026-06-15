@@ -42,6 +42,39 @@
         let fr = ["banana","apple","melon","mango"] ;
         let veg = ["carrots","potatoes"]
         let cpFr = [...fr].join(" ") ;
-        console.log(cpFr ,...veg)      //spread
+        console.log(cpFr ,...veg)      //spread rest from ,,,, to array 
 
+        function rest (...names){
+            console.log(names) ;
+        }
+        let name1 = "aziz" ;
+        let name2= 'bachir' ;
+        let name3= "mohamed" ;
+        rest(name1,name2,name3)
+
+        function sum(...n) {
+            let s = 0 ;
+            for (i of n){
+                s+=i ;
+            }
+            return s;
+        }
+        const nbr = sum(1,2,3,4,5,0) ; console.log(nbr) ;
+
+        function avg(...n) {
+            let s = 0 ;
+            for (i of n){
+                s+=i ;
+            }
+            return console.log( Math.round((s / n.length )*100)/100 );
+        }
+        avg(14,17,8,12,19,7.8)
+
+        function cnc (...ch) {
+            let ph ="" ;
+            for (i of ch.join(" ")){
+                ph+=i
+            }return console.log(ph)
+        }
+        cnc("aziz","17","abdallah") ;
 </script>
