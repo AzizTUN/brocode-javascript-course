@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style></style>
+<body>
+    
+</body>
+</html>
+<script>
+    const pssln = 10;
+    const inc_lw = true ;
+    const inc_up = true ;
+    const inc_num = true ;
+    const inc_symb = true ;
+    function random(bi,bs){
+        return bi===0 ? Math.trunc(bi+Math.random()*(bs-bi+1)) : String.fromCharCode(Math.trunc(bi+Math.random()*(bs-bi+1))) ;
+    }
+    function gen_pss(pssln,inc_lw,inc_up,inc_num,inc_symb) {
+        const psw = []
+        let prc = 1 ; prc += ( +(inc_lw && inc_up)  ) ; prc += inc_num ; prc += inc_symb ;
+        const syb = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" ;
+        for (let i = 0 ; i<pssln ; i++){
+            const rdm = Math.trunc(1+Math.random()*prc)
+            switch (rdm){
+                case 1 :
+                    psw.push(random(65,90))
+                    break;
+                case 2 :
+                    psw.push(random(97,122))
+                    break;
+                case 3 :
+                    psw.push(random(48,57))
+                    break;
+                default :
+                    psw.push(syb[random(0,syb.length-1)])
+                    break;
+            }
+        }console.log(...psw.join(""))
+    }
+    gen_pss(pssln,inc_lw,inc_up,inc_num,inc_symb)
+</script>
