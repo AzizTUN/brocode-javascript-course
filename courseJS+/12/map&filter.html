@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //.map() accept a callback and applies that function to each element of an array,then return a new array
+    const nbr = [1,2,3,4,5] ;
+    nbr.forEach(function(x,y,z){
+        z[y] = Math.pow(x,2)
+    })
+    //old
+    
+    function cube (T){
+        return Math.pow (T,3)
+    }
+    const copi = nbr.map(cube)
+    copi.forEach(function(x){console.log(x)}) ;
+
+    const dates = ["2024-02-20","2025-03-25","2026-05-12","2021-11-30"] ;
+    const copiDates = dates.map(function(x,y,z){
+        let part = x.split("-");
+        return `${part[1]}/${part[2]}/${part[0]}` ;
+    })
+    copiDates.forEach(function(x){
+        console.log(x);
+    })
+
+    let No2025 = copiDates.filter(kill2025);
+
+    function kill2025 (T){
+        let tmp = T.split("/");
+        return tmp[2] === "2025" ? true : false ;
+    }
+    console.log(No2025)
+
+
+    const Ages = [12,18,22,43,9,16,23,29] ;
+    let Fadult = Ages.filter(isAdult) ;
+    function isAdult (T) {
+        return T >=18 ? true : false ;
+    }
+    console.log(Fadult) //RegEx ???
+
+    const prices = [2,30,10,25,15,20] ;
+    const tot = prices.reduce (sum) ;
+    function sum (acc , T){
+        return acc + T ;
+    }
+    console.log(`$${tot.toFixed(2)}`)
+
+    //max
+    const scores = [12, 45, 78, 32, 99, 15];
+
+    const highest = scores.reduce(function(acc, T) {
+        // If the current number (T) is bigger than our high score (acc), T becomes the new high score!
+        return (T > acc) ? T : acc;
+    }, 0); // Start the high score check at 0
+    console.log(highest); // 99
+</script>
+</html>
