@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+</body>
+<script>
+    /*function getIn(Out){
+        console.log("Get In !") ;  Out(getIn) ;
+    }
+    function getOut(In){
+        console.log("Get Out !") ; In(getOut) ;
+    }
+    getIn(getOut)*/
+    function sum(x , y) {
+        return x + y ;
+    }
+    function prd ( x , y) {
+        return x*y ;
+    }
+    //callback now
+    function disp (callback , x , y) {
+        document.querySelector('h1').textContent = callback(x,y) ;
+    }
+    disp(prd , 10 , 5)
+    /* callback function made u a benifit such as using multiple func in one function */
+    /* hey when ur done call this next ! */
+
+        //forEch()
+    let Numbre = [1,2,3,4,5] ;
+    function displayEch(x,y,z) {
+       /* for(i of T) {
+            console.log (i) ;
+        }
+        for(i in T) {
+            console.log(T[i])
+        }
+        for(let i = 0 ; i<T.length ; i++) {
+            console.log(T[i])
+        }*/
+       
+       //console.log(`first index ${x} de ${y} of ${z}`) ;
+       
+       console.log(`see the ${y} of ${z[y]}`);
+    }
+    Numbre.forEach(displayEch)
+    Numbre.forEach (function(x,y,z) {
+        return z[y] === 2 ? null : console.log(z[y])
+    })
+    /* x only return the element || x,y index , element || x,y,z element , index , array(hole)*/
+    Numbre.forEach(function(x,y,z){
+        z[y] = x *2;
+        console.log(z[y]) ; //double it !
+    })
+    //fruits (strings)
+    let fruits = [ "banana" , "orange" , "apple" , "mango"] ;
+    function afficher (T) {
+        console.log(T)
+    }
+    fruits.forEach(function(x,y,z){
+        z[y] = x[0].toUpperCase()+x.slice(1);
+    })
+    fruits.forEach(afficher) ;
+</script>
+</html>
