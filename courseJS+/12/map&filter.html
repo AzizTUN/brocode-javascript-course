@@ -62,5 +62,11 @@
         return (T > acc) ? T : acc;
     }, 0); // Start the high score check at 0
     console.log(highest); // 99
+
+    const moy = [12.3 , 15.09 , 18.07 , 8.89 , 7.56 , 16.22] ;
+    let avg = moy.reduce(function(prev,next){
+        return (prev + next ) ;
+    })
+    avg = (avg/moy.length ) ; console.log(avg.toFixed(2));
 </script>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const nbr = [1,2,3,4,5,6] ;
+
+    const sqr = nbr.map((x) =>{
+        return Math.pow(x,2) ;
+    })
+
+    const even = nbr.filter((x) => x % 2 === 0 ) ;
+    let avg = nbr.reduce((x,y) => x + y ) ;
+
+    avg = avg / nbr.length ;avg.toFixed(2);
+    console.log(avg)
+
+    nbr.forEach((x,y,z) => document.writeln(`<p>${z[y]}</p>`))
+
+//setTimeout(function(){xxxxx},30000)
+    console.log(even) ; console.log(sqr) ;
+    //Here i finished forEach : map / reduce / filter §
+    //arrow function
+    //named one :
+    const hello = () => {console.log("this is it !")} ;
+     setTimeout( hello , 3000)
+//anotherOne :
+    setTimeout( () => document.writeln("nah") , 30000);
+    //OBJECT AND METHOD !!!!
+    // obj is like enreg    method is a function related to an obj
+    const person = {
+        firstName : "Aziz",
+        lastName : "abdallah",
+        isStudent : true ,
+        age : 18 ,
+        hola : (x) => (`hello my name is ${x}`),
+    };const pp = person ;
+    console.log(`${pp.firstName} ${pp.lastName} he is ${pp.age} years old.\nbtw ${pp.hola(pp.firstName)}`);
+
+    //this !!! ARROW FUNC NOT WORKING WITH THIS IT LOOK OUTSIDE TO FIND GLOBAL OBJ !!!
+    const eleve = {
+        Fullname : "Aziz abdallah",
+        Age : 18,
+        Section : "science informatique",
+        GoodBehavior : true ,
+        SecretCode (y) { return y==="0A7B" ? `Wellcome u have entred the right code (${this.Fullname}) !` : "wrong code" },
+    };const e = eleve ;
+    document.write(e.SecretCode("0A7B")) ;
+</script>
