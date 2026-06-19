@@ -23,4 +23,92 @@
     document.writeln(car1.model);
     document.writeln(car1.code(97)) ;
     //NOW FIRST ES6+ FUTURE : CLASSES !!!
+    class Product{
+        constructor(name,price){
+            this.name = name ;
+            this .price = price ;
+        }
+        dispP(){
+            console.log(`the ${this.name} is $${this.price.toFixed(2)} Dolar`) ;
+        }
+        totCalc(tax){
+            return this.price + (this.price * tax) ;
+        }
+    }
+    const prod1 = new Product("shirt",19.99) ;
+    const prod2 = new Product("shoes",37.59) ;
+    const prod3 = new Product("pants",23.99) ;
+    prod1.dispP();
+    //console.log(prod1.totCalc(0.05).toFixed(2))
+    //STATIC : keywordnthatbdefines properties or methods that belong to a class itself 
+    // rather than the obj created from that class (class own anything static,not the objs)
+    class MathUtil {
+        static PI = 3.14159 ;
+
+        static getDiameter(rd){
+            return rd * 2;
+        }
+
+        static getCircumference(rd){
+            return 2 * this.PI
+        }
+
+        static getArea(rd){
+            return this.PI * rd * rd;
+        }
+    }
+    console.log(MathUtil.PI);
+    console.log(MathUtil.getDiameter(10));
+    console.log(MathUtil.getCircumference(10));
+    console.log(MathUtil.getArea(10));
+
+
+
+    const BonL = (ser,code,mark) => (String.fromCharCode(Number(ser[code])+65)+mark)
+    /* training para mi */
+    class Playstation{
+        constructor (mark,series,Nvme,prices){
+            this.mark = mark ;
+            this.series = series ;
+            this.Nvme = Nvme ;
+            this.prices = prices ;
+        }
+        set mark(v1){
+            const model = ["PS4","PS4pro","PS5","PS5slim","PS5pro","PS4slim"] ;
+            (typeof v1 ==="string" && model.includes(v1)) ?
+            this._mark = v1 : console.error("mark must be a string from the real Mark !") ;
+        }
+        get mark(){
+            return this._mark ;
+        }
+        afterTaxes (tax) {
+            return (this.prices + (this.prices * tax)).toFixed(2) ;
+        }
+        static Hcb(){console.log("Hola amigo !")}
+
+        static Foundation = "1999-01-02" ;
+        LuckyBon (code) {
+            return code !== Math.trunc(1+Math.random()*5) ? 'hard luck , next time maybe !' 
+            : "congratulation u win a free Coupon ur secret code is "
+            +`${BonL(this.series,code,this.mark)}. `
+        }
+    }
+    const ps1 = new Playstation("PS5","01287","512GB",1250.85) ;
+    console.log(ps1.afterTaxes(0.09)) ;
+    console.log(ps1.LuckyBon(1))
+    const ps2 = new Playstation("PS4pro","01325","216GB",320.50);
+    console.log(Playstation.Foundation)
+
+    class User {
+        static userCount = 0;
+        constructor (userName){
+            this.userName = userName ;
+            User.userCount ++;
+        }
+    }
+    const user1 = new User("Aziz") ;
+    const user2 = new User("Ali") ;
+    console.log(`the nombres of users is ${User.userCount}.`)
+
+
 </script>
