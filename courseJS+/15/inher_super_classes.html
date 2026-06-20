@@ -46,4 +46,98 @@
     rabbit1.eat()
     hawk1.alive = false ;*/
     console.log(Fish.Nbr)
+
+
+    //mine !:
+    class School {
+        static ref = "09E74i" ;
+        static nbr_school = 0 ;
+        constructor (president, vicePresident ,place,foundation,type){
+            this.president = president;
+            this.vicePresident = vicePresident;
+            this.place = place;
+            this.foundation = foundation;
+            this.type = type ;
+            School.nbr_school++;
+        }
+        set type(v1){
+            (typeof(v1)==="string" && ( v1 === "FREE" || v1 === "PAID")) ? 
+            this._type = v1 : (()=>{ throw new Error("u can only give /paid || free for this type of school")});
+        }
+        get type(){
+            return this._type;
+        }
+        set foundation(v2){
+            (typeof(v2) !== "string" || isNaN(Date.parse(v2))  ) ?
+            console.error("error Wrong date format !") : this._foundation = v2   ;
+        }
+        get foundation(){return this._foundation;}
+    }
+    class Sections extends School{
+        static nbr = 0;
+        constructor (name , avgMoy , popularityByYear,president, vicePresident, place, foundation, type){
+            super(president, vicePresident, place, foundation, type);
+            this.name= name;
+            this.avgMoy = avgMoy;
+            this.popularity = popularityByYear;
+            Sections.nbr ++;
+        }
+        set avgMoy(v1){
+            (typeof(v1) !=="number" || isNaN(v1) || Number(v1)>20 || Number(v1)<0) ?
+            console.error("wrong format .. Number de {20..0}") : this._avgMoy = v1;
+        }
+        get avgMoy(){
+            return this._avgMoy;
+        }
+    }
+    class Professors extends School {
+        static nbr = 0;
+        constructor (Idcarde , FullName , grade , section,president, vicePresident, place, foundation, type){
+            super(president, vicePresident, place, foundation, type) ;
+            this.Idcarde = Idcarde ;
+            this.FullName = FullName ;
+            this.grade = grade ;
+            this.section = section;
+            Professors.nbr++;
+        }
+    }
+    class Peoples extends School{
+        static nbr_people = 0
+        constructor (FullName,grade,section,behaviour,president, vicePresident, place, foundation, type){
+            super(president, vicePresident, place, foundation, type) ;
+            this.FullName = FullName ;
+            this.grade = grade ;
+            this.section = section ;
+            this.behaviour = behaviour ;
+            Peoples.nbr_people++;
+        }
+    }
+    const school1= new School("Aziz","Adnan","Gabés","2026-06-20","FREE");
+    console.log(School.nbr_school)
+    const prof1 = new Professors("092145","Aziz Abdallah","Trés Bien","SCInformatique","Aziz","Adnan","Gabés","2026-01-02","FREE");
+    console.log(Professors.nbr)
+    /*// 🛑 LOCK DOWN RULE: Stop any new properties from being added!
+        Object.preventExtensions(this);*/
+        //super : if the father have  things u can remove them in assinemnt of children
+        //but u need to pass them in super and construnctor
+        //for method u need to use : super.NameOfMeth("this if it have para")
+    class AnTes {
+        constructor (name , model){
+            this.name = name;
+            this.model = model;
+        }
+        stat(speed){
+            console.log(`this car can run above ${speed}KM/h.`);
+        }
+    }
+    class BMW extends AnTes {
+        constructor (name,model,speed){
+            super(name,model);
+            this.speed = speed;
+        }
+    }
+    const AnTes1 = new AnTes("GermanySSX","LightX07");
+    const bmw1 = new BMW("GermanySSX","bmwBenzXi",179.9);
+    bmw1.stat(bmw1.speed);
+
 </script>
