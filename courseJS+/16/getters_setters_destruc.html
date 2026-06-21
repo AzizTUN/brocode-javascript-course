@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /*
+    getter = special method that makes a property readable
+    setter = special method that makes a property writeable
+    ***validation and modify a value when reading/writing a property
+    */
+   class Rectangle {
+
+    constructor (width,height){
+        this.width = width;
+        this.height = height;
+    }
+    set width(v1){
+        v1 > 0 ? this._width=v1 : console.error("wrong width format .")
+    }
+    set height(v2){
+        v2 > 0 ? this._height=v2 : console.error("wrong height format .")
+    }
+    get width(){return `${this._width.toFixed(1)}cm`;}
+    get height(){return `${this._height.toFixed(1)}cm`}
+    get area(){return `${(this._height * this._width).toFixed(1)}cm`}
+   }
+   class Tringle {
+
+    constructor (width,height){
+        this.width = width ;
+        this.height = height ;
+    }
+    set width(v1){
+        (typeof v1 !=="number" ||Number(v1) < 0) ? console.log("Error Wrong 'Width' format." ) : this._width = v1 ; 
+    }
+    set height(v2){
+        (typeof v2 !=="number" ||Number(v2) < 0) ? console.log("Error Wrong 'Height' format." ) : this._height = v2 ; 
+    }
+    get width(){return this._width}
+    get height(){return this._height}
+    get area(){return `${((this._height * this._width)/2).toFixed(1)}cm`}
+   }
+
+
+   const rec1 = new Rectangle(20,30);
+   console.log(rec1.area)
+   const tri1 = new Tringle(6,4);
+   console.log(tri1.area)
+
+   // destructuring !!!
+
+   let a = 3 ;
+   let b = 7 ;
+   [a , b] = [b , a] ;  //swap the variable a=b b=a
+
+   let color = ["red" , "black" , "green" ,"yellow" , "white"];
+   [color[0] , color[4]] = [color[4] , color[0]] ;  //swap element in an array
+
+   const [fic,sc,tc,fc,...extraC] = color ; //assigne elemnet de array to variable
+
+   const eleve1 ={
+        nom :"aziz",
+        age :18 ,
+        hobbi:"programation" ,
+   }
+   const {nom,age,hobbi,job="ppoocc"} = eleve1 //assigne obj element to a variable
+
+   function dispEleve ({nom,age,hobbi,job="poto"}){
+    console.log(nom);
+   }                        //distruct in function parqa
+   console.log(eleve1) ;    
+</script>
