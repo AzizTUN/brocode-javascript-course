@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const fruits = [
+        {name: "apple", color: "red", price: 3.99},
+        {name: "banana", color: "yellow", price: 6.99},
+        {name: "orange", color: "orange", price: 3.49},
+        {name: "melon", color: "gold", price: 2.99},
+        {name: "pineapple", color: "yellow", price: 4.49},
+    ];
+    console.log(fruits[3].name)
+    for(const fruit in fruits){
+        for(let i of Object.values(fruits[fruit]))
+        console.log(i)
+    }
+    fruits.push({name: "grapes", color: "purple", price: 7.49}) ;
+
+    fruits.forEach((x,y,z) =>{
+        console.log(z[y].price)
+    })
+
+    const newFruit = fruits.map( fruit =>
+        fruit.color )
+    console.log(newFruit) ;
+    
+</script>
