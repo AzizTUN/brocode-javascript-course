@@ -75,5 +75,66 @@
    function dispEleve ({nom,age,hobbi,job="poto"}){
     console.log(nom);
    }                        //distruct in function parqa
-   console.log(eleve1) ;    
+   //console.log(eleve1) ;    
+
+   //nested object :
+   /*class People {
+    constructor (name,age,hobbie,grade){
+        this.name=name ;
+        this.age = age ;
+        this.hobbie = hobbie ;
+        this.grade = grade ;
+    }
+    set age(va1){
+        ( typeof va1 === "number" && Number(va1) > 0 && Number.isInteger(va1)) ? this._age = va1 : console.error("wrong age format") ; 
+    }
+    get age(){
+        return this._age ;
+    }
+    static ref = "07Ta5B" ;
+    hola(x){
+        console.log(`hola mi nombre es ${x} .`);
+    }
+   }
+   const elv1 = new People("Aziz",18,"Painter","A+");
+   elv1.hola(elv1.name) ; */  
+   const cars = {
+    mark : "bmw",
+    model : "iX",
+    color : ["blue","black","white","red"] ,
+    ref : "A097iU03",
+    isAvailable : true,
+    typeForm : {
+        moteur : "halvy" ,
+        style : "titanum" ,
+        wheel : "X07 premuim",
+    }
+   }
+   for(const prop in cars.typeForm){
+    //console.log(cars.typeForm[prop])            //Object.values() turn an object into an array so u can loop it using of .
+   }
+
+
+
+   class Person {
+
+    constructor (name , age , ...address){
+        this.name = name ;
+        this.age = age ;
+        this.address = new Address(...address) ;
+    }
+   }
+
+   class Address {
+
+    constructor (street , city , country ){
+        this.street = street ;
+        this.city = city ;
+        this.country = country ;
+    }
+   }
+
+   const user1 = new Person ("Aziz",18,"El Manzel 6000", "Gabés", "Tunisia") ;
+   console.log(user1.address.city) ;
+
 </script>
