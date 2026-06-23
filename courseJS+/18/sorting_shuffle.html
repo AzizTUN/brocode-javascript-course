@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //sort element as strings in lexicographic order , not alphabetical mean (alphabet number symbols) as strings
+    let nbr = [9,5,2,10,3,7] ;
+    nbr.sort((a,b) => a-b );
+    console.log(nbr) ;
+    const people = [{name: "aziz",age:18,gpa:3.0},
+                    {name: "bachir",age:17,gpa:1.5},
+                    {name: "ali",age:15,gpa:2.0},
+                    {name: "ahmed",age:16,gpa:0.75},
+    ]
+    people.sort( (a,b) => a.age - b.age)
+    console.log(people)
+
+    //shuffle ç optionel thing u can skip it for now :
+
+    const car = ["A",2,3,4,5,6,7,8,9,10,'J','Q','K'] ;
+    shuffle(car) ;
+    //Fisher-Yates Shuffle
+    function shuffle (T) {
+        for(let i = T.length -1 ; i>=0 ; i--){
+            const j = Math.floor(Math.random()*(i+1)) ;
+            [car[i],car[j]] = [car[j],car[i]] ;
+        }
+    }
+    console.log(car) ;
+
+</script>
