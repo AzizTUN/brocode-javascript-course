@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="x1" style="color: white;background-color: rgb(37, 37, 218);display: block;border: none;border-radius: 15px; padding: 10px;margin: 5px;">Play Me</button>
+    <button class="x2" style="color: white;background-color: rgb(218, 70, 37);display: block;border: none;border-radius: 15px; padding: 10px;">Clear Me</button>
+</body>
+</html>
+<script>
+    //date
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() +1;
+    const day = date.getDate();
+    const dayOfTheWeek = date.getDay();          // u can use set like date.setFullYear(2027) for ech methode above and down
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+    //closure (inner function can access to outer function scoop and variable & make it private) ;
+
+    const outer = () =>{
+        let message = "hello" ;
+        const inner = () =>{
+            console.log(message) ;
+        }
+        inner()
+    }
+    message = "bye";
+    outer()
+
+    function createCounter(){
+        let count = 0 ;
+        function counter() {
+            count++;
+            console.log(`u are in ur ${count} state .`);
+        }
+        function decrease(){
+            count--;
+            console.log(`u are in ur ${count} state .`);
+        }
+        return {counter,decrease} ;
+    }
+    const cnt = createCounter();
+    cnt.counter()
+    cnt.counter()
+    cnt.counter()
+    cnt.decrease()
+    cnt.decrease()
+
+    function score (pts){
+        let score = 0;
+        function incScore (pts){
+            score +=pts
+            console.log(`u gained +${pts}pts`);
+        }
+        function decScore (pts){
+            score -=pts ;
+            console.log(`u losed -${pts}pts`);
+        }
+        function getScore (){
+            console.log(`u have currently ${score}pts .`);
+        }
+        return {incScore,decScore,getScore}
+    }
+
+    class Score {
+        static ref ="U7F003" ;
+        #score ;
+        constructor (debut = 0) { this.#score = debut}
+        gain (pts){
+                this.#score+=pts;
+                console.log(`win +${pts}pts`)
+            }
+        desc (pts){
+            this.#score -=pts ;
+            console.log(`losed -${pts}pts`);
+        }
+        getScore (){
+            console.log(`currently ${this.#score}pts .`);
+        }
+
+    }
+
+    const user1 = score(12) ;
+    user1.incScore(19) ;
+    user1.incScore(21) ;
+    user1.decScore(1) ;
+    user1.getScore()
+
+    const player1 = new Score(3);
+    player1.gain(19);
+    player1.gain(21);
+    player1.desc(1);
+    player1.getScore();
+
+
+
+    //settimeOut :   (callback , delay)
+    const TimeId = setTimeout(() => window.alert("Hello") ,3000) ;
+    clearTimeout(TimeId) ;
+
+    const btn = document.querySelector(".x1") ;
+    const btnC = document.querySelector(".x2") ;
+    let idT1 ;
+    function play (){
+        idT1 = setTimeout(() => window.alert("hello ."),3500);
+    }
+    function clear(){
+        clearTimeout(idT1) ;
+    }
+    
+    btn.addEventListener("click" , play) ;
+    btnC.addEventListener("click" , clear)
+
+
+</script>
