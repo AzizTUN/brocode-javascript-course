@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        background-image: url(../../photoecx/QhdImg.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+        /*border: 1px solid black;*/
+        height: 100vh;
+    }
+    .clock{
+        font-family: monospace;
+        font-size: 6.5rem;
+        font-weight: bold;
+        text-align: center;
+        animation-name: clockColor;
+        animation-duration: 15s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        text-shadow: 1px 1px 1px white;
+        opacity: 0.9;
+        backdrop-filter: blur(2px);
+        padding: 2px;
+        border-radius: 25px;
+        width: 100%;
+    }
+    @keyframes clockColor {
+        0%{
+            color: rgb(255, 208, 208);
+        }
+        25%{
+            color: whitesmoke;
+        }
+        50%{color: rgb(209, 255, 250);}
+        75%{color: rgb(255, 247, 226);}
+        100%{
+            color: rgb(243, 231, 255);
+        }
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="clock">
+            00:00:00
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function updClock(){
+        const now = new Date() ;
+        let hr = now.getHours()
+        const merd = hr >= 12 ? "PM" : "AM" ;
+        hr = hr % 12 || 12
+        hr = hr.toString().padStart(2 , 0);
+        const mn = now.getMinutes().toString().padStart(2 , 0);
+        const sc = now.getSeconds().toString().padStart(2 , 0);
+        const timeString = `${hr}:${mn}:${sc} ${merd}`;
+        document.querySelector(".clock").textContent = timeString ;
+    }
+    updClock()
+    setInterval(updClock , 1000);
+</script>
