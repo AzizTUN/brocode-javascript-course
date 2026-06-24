@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            background-color: hsl(0, 0%, 90%);
+        }
+        #myH1{
+            font-size: 4rem;
+            font-family:Arial, sans-serif ;
+            color :hsl(0, 0%, 25%);
+            text-align: center;
+        }
+        #container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 5px solid;
+            border-radius: 50px;
+            padding: 30px;
+            background: white;
+        }
+        #display{
+            font-size: 5rem;
+            font-family: monospace;
+            font-weight: bold;
+            color: hsl(0, 0%, 30%);
+            text-shadow:2px 2px 2px hsla(0, 0%, 0%, 0.75) ;
+            margin-bottom: 25px;
+        }
+        #controls button{
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding:10px 20px ;
+            margin: 5px;
+            min-width: 125px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+        }
+        #startBtn{
+            background-color: hsl(90, 100%, 39%);
+            transition: ease 0.5s;
+        }
+        #startBtn:hover{
+            background-color: hsl(115, 100%, 30%);
+        }
+        #stopBtn{
+            background-color: hsl(0, 100%, 40%);
+            transition: ease 0.5s;
+        }
+        #stopBtn:hover{
+            background-color: hsl(0, 100%, 30%);
+        }
+        #resetBtn{
+            background-color: hsl(209, 100%, 40%);
+            transition: ease 0.5s;
+        }
+        #resetBtn:hover{
+            background-color: hsl(209, 100%, 30%);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="myH1">Stopwatch</h1>
+
+    <div id="container">
+        <div id="display">
+            00:00:00:00
+        </div>
+        <div id="controls">
+            <button id="startBtn">Start</button>
+            <button id="stopBtn">Stop</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const disp = document.querySelector("#display") ;
+    const start = document.querySelector("#startBtn") ;
+    const stop = document.querySelector("#stopBtn") ;
+    const reset = document.querySelector("#resetBtn") ;
+    start.addEventListener("click",play);
+    stop.addEventListener("click",sto);
+    reset.addEventListener("click",rese);
+    let timer = null;
+    let startTime = 0;
+    let elapsedTime = 0;
+    let isRunning = false;
+
+    function play(){
+        if(!isRunning){
+            startTime = Date.now() - elapsedTime ;
+            timer = setInterval(upd,10);
+            isRunning = true;
+        }
+        
+    }
+    function sto(){
+        if(isRunning){
+            clearInterval(timer);
+            elapsedTime = Date.now() - startTime;
+            isRunning = false;
+        }
+    }
+    function rese(){
+        clearInterval(timer)
+         startTime = 0;
+         elapsedTime = 0;
+         isRunning = false;
+         disp.textContent = "00:00:00:00"
+    }
+    function upd(){
+
+        const currentTime = Date.now();
+        elapsedTime = currentTime - startTime;
+
+        let hours = Math.floor(elapsedTime / (1000 * 60 *60));hours=hours.toString().padStart(2,'0');
+        let minutes = Math.floor(elapsedTime / (1000 * 60) % 60 );minutes=minutes.toString().padStart(2,'0');
+        let seconds = Math.floor((elapsedTime / 1000) % 60 );seconds=seconds.toString().padStart(2,'0');
+        let miliseconds = Math.floor(elapsedTime % 1000 /10);miliseconds=miliseconds.toString().padStart(2,'0');
+        disp.textContent = `${hours}:${minutes}:${seconds}:${miliseconds}`
+
+    }
+
+</script>
