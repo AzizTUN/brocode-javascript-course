@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: hsl(0, 0%, 88%);
+        margin: 0;
+        align-content: center;
+        display: flex;
+        flex-flow: column;
+        
+    }
+    h1{
+        text-align: center;
+        color: rgb(111, 34, 29);
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px black;
+        font-size: 46px;
+    }
+    .cont{
+        display: flex;
+        border: 5px solid;
+        padding: 30px;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 50px;
+        background-color: #fff;
+        min-height: 190px;
+        justify-content: center;
+        margin: 30px;
+    }
+    #dsp{
+        font-family: monospace;
+        font-size: 4.2rem;
+        font-weight: bold;
+        color: #303030eb;
+        text-shadow: 1px 1.5px 1.5px rgb(0, 0, 0);
+    }
+    .btns{
+        margin-top: 15px;
+    }
+    button{
+        border: none;
+        width: 4.8rem;
+        padding: 12px;
+        font-size: 1.05rem;
+        font-weight: bold;
+        border-radius: 15px;
+        margin-left: 10px;
+        transition: ease 0.2s;
+    }
+    #st{
+        color: green;
+    }
+    #pa{
+        color: firebrick;
+    }
+    #re{
+        color: rgb(1, 1, 208);
+    }
+    #st:hover , #pa:hover , #re:hover{
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+</style>
+<body>
+    <h1>Chronometre</h1>
+    <div class="cont">
+        <div id="dsp">
+            00:00:00:00
+        </div>
+        <div class="btns">
+            <button id="st">start</button>
+            <button id="pa">stop</button>
+            <button id="re">reset</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const st = document.querySelector('#st');
+    const pa = document.querySelector('#pa');
+    const re = document.querySelector('#re');
+    const disp = document.getElementById("dsp");
+    let isRunning = false;
+    let time = null;
+    let past = 0;
+    let currentTime =0;
+    st.addEventListener("click",start);
+    pa.addEventListener("click",stopp);
+    re.addEventListener("click",reset);
+    function start (){
+        if (!isRunning){
+            isRunning = true;
+            past = Date.now() - currentTime;
+            time = setInterval(upd , 10);
+        }
+    }
+    function reset (){
+        clearInterval(time);
+        time = null;
+        isRunning = false
+        disp.textContent = "00:00:00:00"
+        currentTime = 0;
+    }
+    function stopp(){
+        clearInterval(time);
+        time = null;
+        isRunning = false
+
+
+    }
+    function upd(){
+        currentTime = Date.now() - past
+        let hr = Math.floor((currentTime / (3600*1000))).toString().padStart(2,0)
+        //
+        //
+        const min = Math.floor((currentTime / (1000*60))%60).toString().padStart(2,0)
+        const sec = Math.floor((currentTime / (1000))%60).toString().padStart(2,0)
+        const ms = Math.floor(currentTime % 1000 / 10).toString().padStart(2,0)
+        disp.textContent = `${hr}:${min}:${sec}:${ms}`;
+    }
+</script>

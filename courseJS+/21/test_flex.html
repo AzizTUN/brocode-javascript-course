@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .father{
+        background-color: gold;
+        padding: 10px;
+        display: flex; /*inline-flex take teh same width of all the children*/
+       /* flex-direction: row; /*default row *//*row-reverse*//*column-reverse*/
+        /*flex-wrap: wrap; /*return to line when overflow*/
+       /* flex-flow: row wrap;/*shortcut for dir & wrap*/
+        min-height:50vh;
+        /*IMP: if dir is row u play with X , column u play along Y */
+       /* justify-content:center ; /*default : controle the XY start is begin of X CENTER*/
+        /*justify-content: space-around;/*space between the element*//*space-around*//*space-evenly same space!*/
+        /*
+            aligne-items : the reverse of what justify-content do 
+            aligne-content : the same as items but it controls the hole content together
+        */
+        /*align-items: center;/*no end and start in just
+        align-content:center ;/*work only with wrap*/
+        /*gap:30px its like margin*/
+    }
+    .children{
+        padding:10px;
+        margin: 10px;
+        text-align: center;
+    }
+    .i1{background-color: green;align-self: center;order:0;}/*flex-grow: 1; take all empty space*/
+    .i2{background-color: red;}/*flex-shrink: enkimech  1 0 for no shrink */
+    .i3{background-color: blue;}/*flex-basis like width but its controle the wdth for row only BUT if its column it controls hight*/
+    .i4{background-color: violet;}/*flex: grow shrink basis*/
+</style>
+<body>
+    <div class="father">
+        <div class="children i1">item 1</div>
+        <div class="children i2">item 2</div>
+        <div class="children i3">item 3</div>
+        <div class="children i4">item 4</div>
+    </div>
+</body>
+</html>
