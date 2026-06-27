@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script type="module">
+    //try {} = encloses code that might potentially cause an error
+    //catch {} = catch and handle any thrown errors from try{}
+    //finally {} opt* always excutes , used mostly for clean up
+    //ex. close files, close connections,reasources
+
+    try{
+        console.log(x);
+        //net err || promise rej || securety err.
+    }catch(error){
+        console.log(error.message+" |||")
+    }finally{
+        //do ur finally things after err like closing files..
+    }
+    try {
+    const dv = prompt("divident :");
+    const dvr = prompt("divid :");
+    if(dvr === "0"){
+        throw new Error("You can't divide by zero!")
+    }
+    const sm = Number(dv) / Number(dvr) ;
+    console.log(sm) ;
+    }catch(err){console.log(err.message)}
+    
+
+</script>
