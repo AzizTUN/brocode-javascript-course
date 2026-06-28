@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #mybox{
+        width: 200px;
+        height: 200px;
+        background-color: rgb(12, 140, 166);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 45px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        
+    }
+</style>
+<body>
+    <div id="mybox">
+        Click Me 😊
+    </div>
+</body>
+</html>
+<script>
+    const box = document.getElementById("mybox");
+    box.addEventListener("mouseover" ,() => {
+        box.style = "background-color:tomato";
+        box.textContent = "Dont do it 😡"
+    })
+    box.addEventListener("mouseout" ,() => {
+        box.style = "background-color:rgb(12, 140, 166);";
+        box.textContent = "Click Me 😊"
+    })
+    box.addEventListener("click" ,() => {
+        box.style = "background-color:wheat";
+        box.textContent = "Grazies 🫡"
+    })
+    //.target      //.key
+</script>

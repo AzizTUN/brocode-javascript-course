@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #mybox{
+        background-color: lightseagreen;
+        width: 200px;
+        height: 200px;
+        font-size: 7.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+</style>
+<body style="margin: 0;">
+    <div id="mybox">
+        😊
+    </div>
+</body>
+</html>
+<script>
+    const box = document.getElementById("mybox");
+    let x=0;let y=0;
+    let moveAmount = 10;
+
+    box.addEventListener("click" , (thing) => {
+        let nc = prompt("MoveAmount ?");
+        (nc != null && (Number.isInteger(Number(nc))) && (Number(nc)>0 && Number(nc)<=200)) ?
+        moveAmount = Number(nc) : null;
+    })
+
+    document.addEventListener("keyup" ,() => {
+        box.style.backgroundColor = "lightseagreen";
+        box.textContent = "😊"
+    })
+
+    document.addEventListener("keydown" , (thing) => {
+        thing.preventDefault();
+        box.style.backgroundColor = "orange";
+        box.textContent = "😣"
+        thing.key == "ArrowRight" ? (x=x+moveAmount,box.style.left = x+"px") : 
+        thing.key == "ArrowLeft" ? (x=x-moveAmount,box.style.left = x+"px") :
+        thing.key == "ArrowUp" ? (y=y-moveAmount,box.style.top = y+"px") :
+        thing.key == "ArrowDown" ? (y=y+moveAmount,box.style.top = y+"px") : null;
+    })
+
+    document.addEventListener("keyup" , (thing) => {
+        
+    })
+
+
+
+
+//test
+document.addEventListener("keydown" , (x) => console.log(`key down = ${x.key}`))
+</script>
