@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            border: 3px solid;
+            width: 100%;
+            height: 125px;
+        }
+        .loco{
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1" class="box">
+        <p>box1</p>
+    </div>
+    <div id="box2" class="box">
+        <p>box2</p>
+    </div>
+    <div id="box3" class="box">
+        <p>box3</p>
+    </div>
+    <div id="box4" class="box">
+        <p>box4</p>
+    </div>
+    <hr>
+    <ul class="fg">
+        <li class="bn">bn</li>
+        <li class="bn">sn</li>
+        <li class="bn">dn</li>
+    </ul>
+</body>
+</html>
+<script>
+    // STEP 1 CREATE THE ELEMENT
+const newH1 = document.createElement("h1");
+    // STEP 2 ADD ATTRIBUTES/PROPERTIES
+newH1.textContent = "i like pizza!"
+    // STEP 3 APPEND ELEMENT TO DOM
+document.body.append(newH1);//last
+//document.body.prepend(newH1);first
+newH1.style = "color:blue"
+document.getElementById("box1").append(newH1) // to put it in specific place
+console.log(newH1)
+newH1.className = "loco"
+newH1.id = "ok1"
+                            //insertBefore(new,current)
+const boxes = document.querySelectorAll(".box")
+
+    //REMOVE HTML ELEMENT
+//document.getElementById("box1").removeChild(newH1)
+
+
+
+const ull = document.querySelectorAll(".fg") ;
+const nwli = document.createElement("li");
+nwli.textContent = "Aziz" ;
+ull.forEach(x => {
+    const lst = x.lastElementChild
+    x.insertBefore(nwli,lst)
+    })
+
+</script>
