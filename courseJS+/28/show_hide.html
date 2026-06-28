@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: bisque;
+    }
+    img{
+        width: 200px;
+        height: 200px;
+        box-shadow: 1.5px 1.5px 9px black;
+        border-radius: 10px;
+    }
+    button{
+        display: block;
+        margin: 15px;
+        width: 3.5rem;
+        padding: 7px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 1.5px 1.5px 5px black;
+        color: purple;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+<body>
+    <img src="../../photoecx/DOM_x.png" alt="image">
+    <button id="btn">Hide</button>
+</body>
+</html>
+<script>
+    const btn = document.getElementById("btn") ;
+    const img1 = document.querySelector("img") ;
+    btn.onclick = (x) => {
+        btn .textContent == "Hide" ? 
+        (img1.style.visibility = "hidden",btn .textContent ="Show") :
+        (img1.style.visibility = "visible",btn .textContent ="Hide") ;
+    }
+    //u can use display but it will not reserve the img space .
+</script>
