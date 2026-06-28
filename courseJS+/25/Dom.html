@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+    <!--
+    <div class="hola" id="alo">
+        Wellcome
+    </div>
+    <div class="hola">alo</div>
+    <div class="hola">haha</div>
+    <div class="hola">ko</div>
+    -->
+
+    <h2>DOM Navigation</h2>
+    <ul id="fr">
+        <li>apple</li>
+        <li>orange</li>
+        <li>banana</li>
+    </ul>
+    <ul id="vg">
+        <li>carrots</li>
+        <li>onions</li>
+        <li>potatoes</li>
+    </ul>
+    <ul id="de">
+        <li>cake</li>
+        <li>pie</li>
+        <li>ice cream</li>
+    </ul>
+</body>
+</html>
+<script>
+    /*const wl = document.getElementById("alo") ;
+    const user = prompt("donner votre nom : ");
+    wl.textContent += (user !== "" && user !== null) ? ` alr : ${user}` :
+    ` no alrez`*/
+   /* const divat = document.querySelectorAll(".hola") ;
+        console.log(divat)
+    for(let i of divat){
+        i.style.backgroundColor='yellow';
+    }
+    Array.from(divat).forEach((x) => x.style="color:red;padding:5px;background-color:gold;");
+    divat.forEach(ln =>{ ln.style.fontSize = "28px"});
+*/
+//DOM Navigation
+const Pfr = document.getElementById("fr");
+const Pvg = document.getElementById("vg");
+const Pde = document.getElementById("de");
+
+const qAll = document.querySelectorAll("ul");
+qAll.forEach(y => y.firstElementChild.style.backgroundColor = "red")
+/*lastElementChildren*/
+
+const xy = Pfr.firstElementChild.nextElementSibling;
+xy.style.backgroundColor = "blue";
+//previousElementSibling
+qAll.forEach(x => x.firstElementChild.nextElementSibling.style.backgroundColor = "green")
+qAll.forEach(x => x.firstElementChild.nextElementSibling.nextElementSibling.style.backgroundColor = "yellow")
+//.parentElement
+//.children  : htmlCollection
+Array.from(Pfr.children).forEach(x => x.style.padding="5px");
+
+    
+</script>
