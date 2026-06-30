@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function task1(callback){
+        setTimeout(() =>{
+            console.log("task 1 completed")
+            callback()
+        },5000)
+        
+    }
+    function task2(callback){
+        setTimeout(() =>{
+            console.log("task 2 completed")
+            callback()
+        },3000)
+    }
+    function task3(callback){
+        setTimeout(() =>{
+            console.log("task 3 completed")
+            callback()
+        },6000)
+    }
+    function task4(callback){
+        setTimeout(() =>{
+            console.log("task 4 completed")
+            callback()
+        },4000)
+    }
+    task1(() => {
+        task2(() => {
+            task3(() =>{
+                task4(() => {
+                    console.log("compete !")
+                })
+            })
+        })
+    })
+
+    //promises :
+    /*
+    // Promise = An Object that manages asynchronous operations.
+//           Wrap a Promise Object around {asynchronous code}
+//           "I promise to return a value"
+//           PENDING -> RESOLVED or REJECTED
+//           new Promise((resolve, reject) => {asynchronous code})
+
+// DO THESE CHORES IN ORDER
+
+// 1. WALK THE DOG
+// 2. CLEAN THE KITCHEN
+// 3. TAKE OUT THE TRASH
+    */
+   function walkdog(){
+
+   return new Promise((res,rej) =>{
+    setTimeout(() =>{
+        const isWalking = true;
+        if (isWalking){
+            res("you walk the dog")
+        }
+        else{
+            rej("you didnt walk the dog")
+        }
+        
+    },1500)
+   })
+   }
+
+    function cleanKitchen(){
+
+    return new Promise((res,rej) =>{
+        setTimeout(() =>{
+        res("you clean the kitchen")
+    },2500)
+    })
+   }
+   
+   function takeOutTrash(){
+    return new Promise((res,rej) => {
+        setTimeout(() =>{
+        res("you take out the trash")
+    },500)
+    })
+   }
+   walkdog().then(v => {console.log(v);return cleanKitchen()})
+          .then(v => {console.log(v);return takeOutTrash()})
+          .then(v => {console.log(v);console.log("all Done!")})
+          .catch(error => console.error(error))
+          .finally(() => {
+          // This runs EVERY SINGLE TIME.
+          console.log("Chores process finished. You can go play video games now!");
+          });
+</script>
