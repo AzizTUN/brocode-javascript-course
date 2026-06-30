@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .win{
+        color: green;
+    }
+    .lose{
+        color: tomato;
+    }
+    h1{
+        font-style: 3.5rem;
+        color: rgba(0, 0, 0, 0.778);
+    }
+    .choices{
+        margin-bottom: 30px;
+    }
+    .choices button{
+        font-size: 7.5rem;
+        min-width: 160px;
+        margin: 0 10px;
+        border-radius: 250px;
+        background-image:linear-gradient(to left,rgb(249, 54, 54),black) ;
+        cursor: pointer;
+        transition: background-image 0.5s ease;
+    }
+    .choices button:hover{
+        background-image:linear-gradient(rgb(249, 54, 54),rgba(0, 0, 0, 0.797)) ;
+    }
+    #playerDisplay,#computerDisplay{
+        font-size: 2.5rem;
+    }
+    #resultDisplay{
+        font-size: 5rem;
+        margin: 30px 0;
+    }
+</style>
+<body>
+    <h1>ROCK - PAPER - SCISSORS</h1>
+    <div class="choices">
+        <button onclick="playGame('rock')">👊</button>
+        <button onclick="playGame('paper')">✋</button>
+        <button onclick="playGame('scissors')">✌️</button>
+    </div>
+    <div id="playerDisplay">PLAYER</div>
+    <div id="computerDisplay">COMPUTER</div>
+    <div id="resultDisplay"></div>
+
+    <div class="score">Player Score:
+        <span id="scp">0</span>
+    </div>
+    <div class="score">Computer Score:
+        <span id="scc">0</span>
+    </div>
+</body>
+</html>
+<script>
+    const choices = ["rock","paper","scissors"] ;
+    const playerDisplay = document.getElementById("playerDisplay");
+    const computerDisplay = document.getElementById("computerDisplay");
+    const resultDisplay = document.getElementById("resultDisplay") ;
+    function playGame(choice){
+let sc=0;let sp=0;
+        let res = "";
+        const cmpChoice = choices[Math.floor(Math.random()*3)] ;
+        console.log(cmpChoice)
+        if(cmpChoice === choice){
+            res = "IT'S A TIE"
+        }else{
+        switch(true){
+            case choice === "rock":
+                cmpChoice === "scissors" ? res = "YOU WIN!" : res = "YOU LOSE!" ;
+                break
+            case choice === "paper":
+                cmpChoice === "rock" ? res = "YOU WIN!" : res = "YOU LOSE!" ;
+                break
+            default :
+                cmpChoice === "paper" ? res = "YOU WIN!" : res = "YOU LOSE!" ;
+                break
+        } }
+        playerDisplay.textContent = `PLAYER ${choice}` ;
+        computerDisplay.textContent = `COMPUTER ${cmpChoice}` ;
+        resultDisplay.classList.remove("win","lose")
+        res === "YOU WIN!" ? (resultDisplay.classList.add("win"),sp++) :
+        res === "YOU LOSE!" ? (resultDisplay.classList.add("lose"),sc++) :
+        null;
+        resultDisplay.textContent = res;
+        console.log(resultDisplay.classList)
+
+
+const scp = document.getElementById("scp") ;
+const scc = document.getElementById("scc") ;
+scp.textContent = Number(scp.textContent) + sp;
+scc.textContent = Number(scc.textContent) + sc;
+
+    }
+</script>

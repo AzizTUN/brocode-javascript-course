@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+    img{
+        width: 80%;
+        display: none;
+        margin:40px auto;
+
+    }
+    .slider{
+        position:relative ;
+        width: 100%;
+        margin: auto;
+        overflow: hidden;
+    }
+    img.displaySlide{
+        display: block;
+        animation-name: fadded;
+        animation-duration:1.5s ;
+    }
+    .slider button{
+        position: absolute;
+        cursor: pointer;
+        top:50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        background-color: rgba(0, 0, 0, 0.473);
+        color: white;
+        padding: 10px 15px;
+        border: none;
+    }
+    .slider .next{
+        right: 0%;
+    }
+    .slider .prev{
+        left: 0%;
+    }
+    @keyframes fadded {
+        from{opacity: .5;}
+        to{opacity: 1;}
+    }
+</style>
+<body>
+    
+    <div class="slider">
+        <div class="slides">
+            <img src="../../photoecx/car1.jpg" alt="car1" class="slide">
+            <img src="../../photoecx/car2.webp" alt="car2" class="slide">
+            <img src="../../photoecx/car3.jpg" alt="car3" class="slide">
+            <img src="../../photoecx/car4.jpg" alt="car4" class="slide">
+        </div>
+        <button class="prev" onclick="prevSlide()">&#10094</button>
+        <button class="next" onclick="nextSlide()">&#10095</button>
+    </div>
+
+</body>
+</html>
+<script>
+    const imgs = document.querySelectorAll(".slides img") ;
+    let slideIndex = 0;
+    let intervalId = null ;
+    //initial
+    document.addEventListener("DOMContentLoaded",initial)
+    function initial(){
+        if(imgs.length > 0){
+            imgs[slideIndex].classList.add("displaySlide") ;
+            const idNext = setInterval(nextSlide,5000) ;
+        }
+    }
+    function showSlide(index){
+        imgs.forEach(x => x.classList.remove("displaySlide"))
+
+        imgs[slideIndex].classList.add("displaySlide") ;
+    }
+    function prevSlide(){
+        slideIndex === imgs.length-1 ? slideIndex =0:
+        slideIndex++;
+        showSlide(slideIndex)
+    }
+    function nextSlide(){
+        slideIndex === 0 ? slideIndex =imgs.length -1:
+        slideIndex--;
+        showSlide(slideIndex)
+    }
+</script>
