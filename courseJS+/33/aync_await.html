@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function brushTeeth(){
+        return new Promise((res,rej) => {
+            const isAlive = true ;
+            setTimeout(() => {
+                isAlive ? res("im brushing My teeth.") : rej("ur dead")
+            }, 1500);
+        })
+    }
+    function tookTheBus(){
+        return new Promise((res,rej)=>{
+            const stillAlive = false ;
+            setTimeout( ()=>{
+                stillAlive ? res("taking the bus."):rej("ur Dead.")
+            },3000 )        
+        })
+    }
+    /*brushTeeth().then( (v) =>{console.log(v);return tookTheBus()} )
+    .then((v)=>{return console.log(v)})
+    .catch((v) => {return console.error(v)})
+    .finally((f)=> console.log("operation completed !")) 
+    */
+   //now u have async and await :
+   async function doChores(){
+try{
+    const brush = await brushTeeth(); console.log(brush)
+    const bus = await tookTheBus(); console.log(bus)
+}catch(er){console.error(er)}
+   }
+   //doChores()
+
+   //  JSON !!!
+// JSON = (JavaScript Object Notation) data-interchange format
+//        Used for exchanging data between a server and a web application
+//        JSON files {key:value} OR [{}, {}, {}] OR [ , , , ]
+
+//        JSON.stringify() = converts a JS object to a JSON string.
+//        JSON.parse() = converts a JSON string to a JS object
+const name = `["Aziz" , "Ali" , "Ahmed" , "Sami" , "Nadhir" , "mourad"] `
+//const jsonName = JSON.stringify(name);
+//
+const person = `{
+    "name" : "Aziz" ,
+    "Age"  : 18 ,
+    "isEmployed"  : true 
+}`
+//const jsonPerson = JSON.stringify(person)
+//
+const people = `[{
+    "name" : "Aziz" ,
+    "Age"  : 18 ,
+    "isEmployed"  : true },
+{
+    "name" : "Ali" ,
+    "Age"  : 17 ,
+    "isEmployed"  : false },
+{
+    "name" : "Ahmed" ,
+    "Age"  : 15 ,
+    "isEmployed"  : false },
+{
+    "name" : "Sami" ,
+    "Age"  : 18 ,
+    "isEmployed"  : true }]`
+//const jsonPeople = JSON.stringify(people)
+//
+
+const jsName = JSON.parse(name) ;
+const jsPerson = JSON.parse(person) ;
+const jsPeople = JSON.parse(people) ;
+//console.log(jsName)
+
+//fetch url path 
+/*fetch("people.json")  //return a promise
+   .then(resp => resp.json())
+   .then(val => {
+        val.forEach(element => {
+            console.log(element)
+        });
+   })
+   .catch(err =>console.error(err))
+*/
+async function loadPeople () {
+    try{
+    const ftch = await fetch("people.json");
+    const people = await ftch.json();
+    console.log(people);
+    }catch(error){console.log(error)}
+}
+loadPeople()
+</script>
