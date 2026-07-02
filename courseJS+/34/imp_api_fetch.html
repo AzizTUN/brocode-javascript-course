@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input style="width: 6rem;padding: 7px;border-radius: 5px;" type="text" id="pok" placeholder="pokemon name">
+    <button style="display: block;padding: 7px;color: blue;margin: 10px;">RESEARCH</button>
+    <figure>
+        <figcaption style="color: red;"></figcaption>
+        <img src="" alt="">
+    </figure>
+</body>
+</html>
+<script>
+    /*function getNumber(d,f){
+        let x;
+        return new Promise((res,rej) =>{
+            setTimeout(() =>{
+                (d == null || f == null || d.trim() == "" || f.trim() == "" 
+                || !Number.isInteger(Number(d)) || !Number.isInteger(Number(f))) ? 
+                rej("not right !") : (d=Number(d),f=Number(f)) ,
+                x = Math.floor(d+Math.random()*(f-d+1)),res(x);
+
+            },5000)
+        })
+    }
+    let d = window.prompt("donner d :")
+    let f = window.prompt("donner f :")
+    async function nbr (d,f){
+        try{
+            const x = await getNumber(d,f) ;
+            console.log(x)
+        }catch(err){console.error(err)}
+    }
+    nbr(d,f)
+    */
+
+
+
+   //imp/
+   // fetch = Function used for making HTTP requests to fetch resources.
+//         (JSON style data, images, files)
+//         Simplifies asynchronous data fetching in JavaScript and
+//         used for interacting with APIs to retrieve and send
+//         data asynchronously over the web.
+//         fetch(url, {options      method: "GET-POST-PUT-DELETE"})
+const img =document.querySelector("figure img") ;
+const imgC =document.querySelector("figure figcaption") ;
+const btn = document.querySelector("button") ;
+const inp = document.querySelector("input[type='text']") ;
+async function loadData(){
+    try{
+        const fck = await fetch(`https://pokeapi.co/api/v2/pokemon/${inp.value.toLowerCase()}`) ;
+        if(!fck.ok){
+            img.src = "" ;
+            img.alt = "" ;
+            throw new Error("can't load !")
+        }
+        const data = await fck.json()
+        img.src = data.sprites.front_default ;
+        img.alt = data.name ;
+        imgC.textContent = data.name ;
+        
+    }catch(err){console.error(err)}
+}
+ const load = btn.addEventListener("click" , loadData)
+
+
+</script>
